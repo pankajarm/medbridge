@@ -12,15 +12,14 @@ DATA_DIR = ROOT_DIR / "data"
 
 # Model settings
 HARRIER_MODEL_NAME = os.getenv("HARRIER_MODEL_NAME", "microsoft/harrier-oss-v1-0.6b")
-GEMMA_MODEL_PATH = os.getenv("GEMMA_MODEL_PATH", str(DATA_DIR / "models" / "google_gemma-3-4b-it-Q4_K_M.gguf"))
 
 # Database paths
 QDRANT_PATH = os.getenv("QDRANT_PATH", str(DATA_DIR / "qdrant"))
 FALKORDB_PATH = os.getenv("FALKORDB_PATH", str(DATA_DIR / "falkordb"))
 
-# LLM settings
-LLM_N_GPU_LAYERS = int(os.getenv("LLM_N_GPU_LAYERS", "-1"))
-LLM_N_CTX = int(os.getenv("LLM_N_CTX", "8192"))
+# LLM settings (connects to llama-server OpenAI-compatible API)
+LLM_API_BASE = os.getenv("LLM_API_BASE", "http://localhost:8080/v1")
+LLM_MODEL_NAME = os.getenv("LLM_MODEL_NAME", "gemma-4")
 LLM_TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.7"))
 
 # Embedding settings

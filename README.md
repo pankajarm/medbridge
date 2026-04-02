@@ -2,14 +2,14 @@
 
 **Everything runs locally. No cloud. No API keys. No data leaves your machine.**
 
-A fully local, multi-agentic system for cross-lingual clinical trial discovery and analysis -- powered by [Microsoft Harrier](https://huggingface.co/microsoft/harrier-oss-v1-0.6b) multilingual embeddings, [Google Gemma 3](https://huggingface.co/bartowski/google_gemma-3-4b-it-GGUF) LLM, [Qdrant](https://qdrant.tech/) vector search, [FalkorDB](https://www.falkordb.com/) knowledge graph, and [LangGraph](https://github.com/langchain-ai/langgraph) multi-agent orchestration.
+A fully local, multi-agentic system for cross-lingual clinical trial discovery and analysis -- powered by [Microsoft Harrier](https://huggingface.co/microsoft/harrier-oss-v1-0.6b) multilingual embeddings, [Google Gemma 4 E2B](https://huggingface.co/ggml-org/gemma-4-E2B-it-GGUF) LLM (via [llama.cpp](https://github.com/ggml-org/llama.cpp)), [Qdrant](https://qdrant.tech/) vector search, [FalkorDB](https://www.falkordb.com/) knowledge graph, and [LangGraph](https://github.com/langchain-ai/langgraph) multi-agent orchestration.
 
 **Search "metformin cardiovascular outcomes" in English, get results from Chinese, Japanese, and German studies -- with zero translation.**
 
 ## Screenshots
 
 ### LLM-Powered Cross-Lingual Analysis
-Gemma 3 4B analyzes retrieved trials across languages and synthesizes findings with cross-lingual insights -- all running locally on Metal GPU.
+Gemma 4 E2B analyzes retrieved trials across languages and synthesizes findings with cross-lingual insights -- all running locally on Metal GPU via llama-server.
 
 ![LLM Analysis](docs/images/llm_analysis.png)
 
@@ -19,7 +19,7 @@ Harrier embeddings retrieve relevant trials across languages (English, German, J
 ![Search Results](docs/images/search_results.png)
 
 ### Hardware Footprint (Apple M3, 8GB RAM)
-Both models (Harrier + Gemma 3) run comfortably on an 8GB Apple Silicon Mac -- 5.6GB RAM, 14% GPU, under 1W average power draw at idle after inference.
+Both models (Harrier + Gemma 4) run comfortably on an 8GB Apple Silicon Mac -- 5.6GB RAM, 14% GPU, under 1W average power draw at idle after inference.
 
 ![Hardware Monitor](docs/images/asitop_hardware.png)
 
@@ -31,7 +31,7 @@ Clinical trial data is sensitive. MedBridge proves you can build a production-gr
 
 - **Cross-lingual semantic search** -- Query in any language, find trials in all 94 supported languages via Harrier embeddings
 - **Drug interaction knowledge graph** -- Visualize drug relationships in FalkorDBLite with Cypher queries
-- **Cross-cultural adverse event analysis** -- Compare safety signals across populations using Gemma 3 LLM analysis
+- **Cross-cultural adverse event analysis** -- Compare safety signals across populations using Gemma 4 LLM analysis
 - **Multi-agent orchestration** -- 5 LangGraph agents (supervisor, search, graph, analysis, ingestion) collaborate with visible trace
 - **Vector + graph hybrid retrieval** -- Qdrant semantic search combined with FalkorDB graph traversal
 
@@ -40,7 +40,7 @@ Clinical trial data is sensitive. MedBridge proves you can build a production-gr
 | Component | Technology | Role |
 |-----------|-----------|------|
 | Embeddings | [Harrier-OSS-v1-0.6B](https://huggingface.co/microsoft/harrier-oss-v1-0.6b) (MPS GPU) | 94-language multilingual embeddings, 1024-dim, 32K context |
-| LLM | [Gemma 3 4B-it](https://huggingface.co/bartowski/google_gemma-3-4b-it-GGUF) Q4_K_M (Metal GPU) | Intent classification, Cypher generation, analysis synthesis |
+| LLM | [Gemma 4 E2B-it](https://huggingface.co/ggml-org/gemma-4-E2B-it-GGUF) Q4_K_M via [llama-server](https://github.com/ggml-org/llama.cpp) (Metal GPU) | Intent classification, Cypher generation, analysis synthesis |
 | Vector DB | [Qdrant](https://qdrant.tech/) (embedded, no server) | Semantic similarity search over trial embeddings |
 | Graph DB | [FalkorDBLite](https://github.com/FalkorDB/FalkorDB) (embedded) | Drug interactions, trial relationships via Cypher |
 | Agents | [LangGraph](https://github.com/langchain-ai/langgraph) (StateGraph) | Multi-agent orchestration with conditional routing |
@@ -55,6 +55,7 @@ Clinical trial data is sensitive. MedBridge proves you can build a production-gr
 - macOS with Apple Silicon (M1/M2/M3/M4)
 - Python 3.12 (must be arm64 -- see Troubleshooting if unsure)
 - Xcode Command Line Tools: `xcode-select --install`
+- [llama.cpp](https://github.com/ggml-org/llama.cpp) (build b8636+ for Gemma 4 support): `brew install llama.cpp`
 - ~6GB free disk space (models + dependencies)
 
 ### Setup (~10 minutes)
@@ -76,19 +77,18 @@ python -c "import platform; print(platform.machine())"
 # 3. Install core dependencies (~2 min)
 pip install -e .
 
-# 4. Install llama-cpp-python with Metal GPU acceleration (~2 min compile)
-#    This compiles llama.cpp from source with Metal support.
-#    If it fails, see Troubleshooting below -- the app still works
-#    for search/retrieval without it (LLM analysis will use a mock).
-CMAKE_ARGS="-DGGML_METAL=on" pip install llama-cpp-python
-
-# 5. Copy environment config
+# 4. Copy environment config
 cp .env.example .env
 
-# 6. Download models (~4 min, ~4GB: Harrier 1.5GB + Gemma 2.5GB)
+# 5. Download Harrier embedding model (~2 min, ~1.5GB)
 python scripts/download_models.py
 
+# 6. Start Gemma 4 LLM server (auto-downloads ~3.2GB on first run)
+#    Run this in a separate terminal and keep it running.
+llama-server -hf ggml-org/gemma-4-E2B-it-GGUF:Q4_K_M
+
 # 7. Generate sample data + build databases (~1 min)
+#    (In your original terminal)
 python scripts/setup_databases.py
 
 # 8. Launch web UI
@@ -104,12 +104,12 @@ Open http://localhost:8501 in your browser.
 | 1. Clone | `git clone` | ~1s | |
 | 2. Create venv | `python3.12 -m venv .venv` | ~2s | Must be arm64 Python |
 | 3. Install deps | `pip install -e .` | ~2 min | PyTorch, Transformers, Streamlit, etc. |
-| 4. Build LLM | `CMAKE_ARGS=... pip install llama-cpp-python` | ~2 min | Compiles C++ with Metal; optional |
-| 5. Config | `cp .env.example .env` | instant | |
-| 6. Download models | `python scripts/download_models.py` | ~4 min | Harrier 1.5GB + Gemma 2.5GB |
+| 4. Config | `cp .env.example .env` | instant | |
+| 5. Download Harrier | `python scripts/download_models.py` | ~2 min | Harrier 1.5GB embedding model |
+| 6. Start LLM server | `llama-server -hf ggml-org/gemma-4-E2B-it-GGUF:Q4_K_M` | ~3 min | Auto-downloads 3.2GB on first run |
 | 7. Setup databases | `python scripts/setup_databases.py` | ~1 min | 20 trials, 116 graph nodes |
 | 8. Launch | `streamlit run src/ui/app.py` | ~10s | First load warms up models |
-| **Total** | | **~10 min** | **Tested on M3 8GB** |
+| **Total** | | **~9 min** | **Tested on M3 8GB** |
 
 ### CLI Mode
 
@@ -122,10 +122,10 @@ python main.py
 | Component | RAM |
 |-----------|-----|
 | Harrier embeddings (MPS) | ~1.5 GB |
-| Gemma 3 4B Q4 (Metal) | ~2.5 GB |
+| Gemma 4 E2B Q4 via llama-server (Metal) | ~3.2 GB |
 | Qdrant + FalkorDB | ~100 MB |
 | Streamlit + Python | ~200 MB |
-| **Total** | **~4.3 GB** |
+| **Total** | **~5.0 GB** |
 
 Some swap usage is expected on 8GB machines when both models are loaded. Performance remains good thanks to unified memory and Metal GPU acceleration.
 
@@ -186,29 +186,28 @@ With deliberate cross-population differences in adverse event rates for demo pur
 
 ## Troubleshooting
 
-### `llama-cpp-python` fails to compile
+### `llama-server` not found
 
-**The app works without it** -- Harrier embeddings, vector search, graph queries, and the Streamlit UI all run fine. Only the LLM analysis will use a keyword-based mock instead of Gemma 3. You can always install it later.
-
-If you see errors about `stdint.h`, `stdbool.h`, or `'cstddef' file not found`, you likely have stale C headers in `/usr/local/include/` from old Homebrew, MySQL, or Node.js installs:
-
+Install llama.cpp via Homebrew:
 ```bash
-# Check for conflicting headers
-ls /usr/local/include/stdint.h /usr/local/include/stdbool.h 2>/dev/null
-
-# Move them out of the way (only if they exist)
-sudo mv /usr/local/include/stdint.h /usr/local/include/stdint.h.bak
-sudo mv /usr/local/include/stdbool.h /usr/local/include/stdbool.h.bak
-
-# Retry
-CMAKE_ARGS="-DGGML_METAL=on" pip install llama-cpp-python
+brew install llama.cpp
 ```
 
-If it still fails due to other headers in `/usr/local/include/`, try:
+If the stable version doesn't support Gemma 4 (`unknown model architecture: 'gemma4'`), install the latest HEAD build:
 ```bash
-SDK=$(xcrun --show-sdk-path)
-CMAKE_ARGS="-DGGML_METAL=on -DCMAKE_FIND_ROOT_PATH=$SDK -DCMAKE_IGNORE_PATH=/usr/local/include" pip install llama-cpp-python
+brew install llama.cpp --HEAD
 ```
+
+Or download pre-built binaries from [llama.cpp releases](https://github.com/ggml-org/llama.cpp/releases) (build b8636+).
+
+### LLM analysis shows mock responses
+
+The LLM server isn't running. Start it in a separate terminal:
+```bash
+llama-server -hf ggml-org/gemma-4-E2B-it-GGUF:Q4_K_M
+```
+
+Wait until you see `HTTP server listening` before using the app. The app gracefully falls back to keyword-based mock responses when the server is unavailable.
 
 ### Python reports `x86_64` instead of `arm64`
 
@@ -220,10 +219,6 @@ rm -rf .venv
 arch -arm64 python3.12 -m venv .venv
 source .venv/bin/activate
 ```
-
-### `unknown model architecture: 'gemma4'`
-
-This means you have the Gemma 4 GGUF which `llama-cpp-python` doesn't support yet. MedBridge uses Gemma 3 4B instead. Re-run `python scripts/download_models.py`.
 
 ## License
 

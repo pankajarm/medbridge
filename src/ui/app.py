@@ -74,7 +74,7 @@ def render_sidebar(system):
     st.sidebar.subheader("Tech Stack")
     st.sidebar.markdown("""
     - **Embeddings**: Harrier-OSS-v1-0.6B (MPS)
-    - **LLM**: Gemma 3 4B (Metal)
+    - **LLM**: Gemma 4 E2B (llama-server)
     - **Vector DB**: Qdrant (embedded)
     - **Graph DB**: FalkorDBLite (embedded)
     - **Agents**: LangGraph
@@ -253,7 +253,7 @@ def main():
 
     # Main content
     st.title("MedBridge")
-    st.caption("Multilingual Clinical Trial Intelligence powered by Microsoft Harrier Embeddings, Google Gemma 3 4B, Qdrant Vector DB, FalkorDBLite Graph DB, and LangGraph Agents")
+    st.caption("Multilingual Clinical Trial Intelligence powered by Microsoft Harrier Embeddings, Google Gemma 4, Qdrant Vector DB, FalkorDBLite Graph DB, and LangGraph Agents")
 
     # Tabs
     tab_search, tab_graph, tab_dashboard = st.tabs(["Search & Analysis", "Drug Interaction Graph", "Dashboard"])

@@ -12,7 +12,7 @@ DATA_DIR = ROOT_DIR / "data"
 
 # Model settings
 HARRIER_MODEL_NAME = os.getenv("HARRIER_MODEL_NAME", "microsoft/harrier-oss-v1-0.6b")
-GEMMA_MODEL_PATH = os.getenv("GEMMA_MODEL_PATH", str(DATA_DIR / "models" / "gemma-4-E2B-it-Q4_K_M.gguf"))
+GEMMA_MODEL_PATH = os.getenv("GEMMA_MODEL_PATH", str(DATA_DIR / "models" / "google_gemma-3-4b-it-Q4_K_M.gguf"))
 
 # Database paths
 QDRANT_PATH = os.getenv("QDRANT_PATH", str(DATA_DIR / "qdrant"))

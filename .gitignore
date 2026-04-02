@@ -31,3 +31,18 @@ Thumbs.db
 
 # uv
 .python-version
+
+# HuggingFace cache
+.cache/
+*.gguf
+*.bin
+*.safetensors
+*.onnx
+*.pt
+*.pth
+
+# Large data artifacts
+*.parquet
+*.arrow
+*.h5
+*.hdf5

@@ -16,19 +16,19 @@ def download_harrier():
 
 
 def download_gemma():
-    """Download Gemma 4 E2B GGUF Q4_K_M for llama-cpp-python."""
+    """Download Gemma 3 4B GGUF Q4_K_M for llama-cpp-python."""
     models_dir = Path(__file__).parent.parent / "data" / "models"
     models_dir.mkdir(parents=True, exist_ok=True)
-    output_path = models_dir / "gemma-4-E2B-it-Q4_K_M.gguf"
+    output_path = models_dir / "google_gemma-3-4b-it-Q4_K_M.gguf"
 
     if output_path.exists():
         print(f"Gemma model already exists at {output_path}")
         return
 
-    print("Downloading Gemma 4 E2B GGUF Q4_K_M...")
+    print("Downloading Gemma 3 4B GGUF Q4_K_M...")
     hf_hub_download(
-        repo_id="lmstudio-community/gemma-4-E2B-it-GGUF",
-        filename="gemma-4-E2B-it-Q4_K_M.gguf",
+        repo_id="bartowski/google_gemma-3-4b-it-GGUF",
+        filename="google_gemma-3-4b-it-Q4_K_M.gguf",
         local_dir=str(models_dir),
     )
     print(f"Gemma model downloaded to {output_path}")

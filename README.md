@@ -97,6 +97,20 @@ streamlit run src/ui/app.py
 
 Open http://localhost:8501 in your browser.
 
+### Setup Time Breakdown
+
+| Step | Command | Time | Notes |
+|------|---------|------|-------|
+| 1. Clone | `git clone` | ~1s | |
+| 2. Create venv | `python3.12 -m venv .venv` | ~2s | Must be arm64 Python |
+| 3. Install deps | `pip install -e .` | ~2 min | PyTorch, Transformers, Streamlit, etc. |
+| 4. Build LLM | `CMAKE_ARGS=... pip install llama-cpp-python` | ~2 min | Compiles C++ with Metal; optional |
+| 5. Config | `cp .env.example .env` | instant | |
+| 6. Download models | `python scripts/download_models.py` | ~4 min | Harrier 1.5GB + Gemma 2.5GB |
+| 7. Setup databases | `python scripts/setup_databases.py` | ~1 min | 20 trials, 116 graph nodes |
+| 8. Launch | `streamlit run src/ui/app.py` | ~10s | First load warms up models |
+| **Total** | | **~10 min** | **Tested on M3 8GB** |
+
 ### CLI Mode
 
 ```bash

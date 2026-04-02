@@ -1,0 +1,24 @@
+{
+  "id": "NCT-DM-004",
+  "title": "Kardiovaskuläre Endpunkte unter Metformin-Therapie bei Typ-2-Diabetes",
+  "abstract": "Diese randomisierte kontrollierte Studie untersuchte die kardiovaskulären Endpunkte einer Metformin-Monotherapie bei 1.500 Patienten mit Typ-2-Diabetes mellitus über 42 Monate. Primärer Endpunkt waren schwere kardiovaskuläre Ereignisse (MACE). Metformin reduzierte MACE um 16% im Vergleich zu Placebo (HR 0,84, 95%-KI 0,71-0,99, p=0,041). Sekundäre Endpunkte zeigten eine Verbesserung des HbA1c (-1,1%) und des Nüchternglukosespiegels. Unerwünschte Ereignisse umfassten gastrointestinale Beschwerden bei 21% der Patienten.",
+  "language": "de",
+  "phase": "III",
+  "country": "DE",
+  "drugs": [
+    "Metformin"
+  ],
+  "diseases": [
+    "Typ-2-Diabetes",
+    "Kardiovaskuläre Erkrankung"
+  ],
+  "adverse_events": [
+    {
+      "name": "Gastrointestinale Beschwerden",
+      "rate": 0.21,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 1500,
+  "year": 2023
+}

@@ -1,0 +1,23 @@
+{
+  "id": "NCT-CV-003",
+  "title": "Aspirina en la prevención primaria cardiovascular en población hispana",
+  "abstract": "Ensayo clínico aleatorizado que evaluó aspirina 100mg diaria versus placebo en la prevención primaria cardiovascular en 3,200 pacientes hispanos con factores de riesgo. Seguimiento de 5 años. La aspirina redujo eventos cardiovasculares mayores en un 12% (HR 0.88, IC 95% 0.78-0.99, p=0.034). Sangrado gastrointestinal mayor ocurrió en 1.8% vs 0.9% del grupo placebo. Se observó mayor beneficio en pacientes con diabetes concomitante.",
+  "language": "es",
+  "phase": "III",
+  "country": "ES",
+  "drugs": [
+    "Aspirina"
+  ],
+  "diseases": [
+    "Enfermedad Cardiovascular"
+  ],
+  "adverse_events": [
+    {
+      "name": "Sangrado gastrointestinal",
+      "rate": 0.018,
+      "population": "Hispanic"
+    }
+  ],
+  "enrollment": 3200,
+  "year": 2023
+}

@@ -1,0 +1,34 @@
+{
+  "id": "NCT-HT-002",
+  "title": "Amlodipin versus Losartan bei essentieller Hypertonie",
+  "abstract": "Eine randomisierte Studie zum Vergleich von Amlodipin 5-10mg versus Losartan 50-100mg bei 1,800 Patienten mit essentieller Hypertonie. Nach 24 Wochen erreichten beide Medikamente eine vergleichbare Blutdrucksenkung. Periphere Ödeme traten bei Amlodipin häufiger auf (10.8% vs 1.9%). Husten war unter Losartan häufiger (5.2% vs 1.0%). Kopfschmerzen wurden bei 6.3% der Amlodipin-Patienten und 4.8% der Losartan-Patienten berichtet.",
+  "language": "de",
+  "phase": "III",
+  "country": "DE",
+  "drugs": [
+    "Amlodipin",
+    "Losartan"
+  ],
+  "diseases": [
+    "Essentielle Hypertonie"
+  ],
+  "adverse_events": [
+    {
+      "name": "Periphere Ödeme",
+      "rate": 0.108,
+      "population": "Western"
+    },
+    {
+      "name": "Husten",
+      "rate": 0.01,
+      "population": "Western"
+    },
+    {
+      "name": "Kopfschmerzen",
+      "rate": 0.063,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 1800,
+  "year": 2022
+}

@@ -1,0 +1,29 @@
+{
+  "id": "NCT-HT-001",
+  "title": "Amlodipine versus Losartan in Essential Hypertension",
+  "abstract": "A randomized trial comparing amlodipine 5-10mg versus losartan 50-100mg in 2,100 patients with essential hypertension. After 24 weeks, both drugs achieved similar blood pressure reduction (amlodipine -15.2/-9.8 mmHg vs losartan -14.8/-9.5 mmHg, p=NS). Adverse events differed significantly: peripheral edema was more common with amlodipine (12.3% vs 2.1%), while cough was more common with losartan (4.5% vs 0.8%). Both were well-tolerated overall.",
+  "language": "en",
+  "phase": "III",
+  "country": "US",
+  "drugs": [
+    "Amlodipine",
+    "Losartan"
+  ],
+  "diseases": [
+    "Essential Hypertension"
+  ],
+  "adverse_events": [
+    {
+      "name": "Peripheral edema",
+      "rate": 0.123,
+      "population": "Western"
+    },
+    {
+      "name": "Cough",
+      "rate": 0.008,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 2100,
+  "year": 2022
+}

@@ -1,0 +1,29 @@
+{
+  "id": "NCT-DM-001",
+  "title": "Cardiovascular Outcomes with Metformin in Type 2 Diabetes",
+  "abstract": "This randomized controlled trial evaluated the cardiovascular outcomes of metformin monotherapy in 2,400 patients with type 2 diabetes mellitus over 48 months. Primary endpoint was major adverse cardiovascular events (MACE). Metformin reduced MACE by 18% compared to placebo (HR 0.82, 95% CI 0.71-0.95, p=0.008). Secondary endpoints showed improvement in HbA1c (-1.2%) and fasting glucose. Adverse events included gastrointestinal symptoms in 23% of patients. No significant increase in lactic acidosis was observed.",
+  "language": "en",
+  "phase": "III",
+  "country": "US",
+  "drugs": [
+    "Metformin"
+  ],
+  "diseases": [
+    "Type 2 Diabetes",
+    "Cardiovascular Disease"
+  ],
+  "adverse_events": [
+    {
+      "name": "Gastrointestinal symptoms",
+      "rate": 0.23,
+      "population": "Western"
+    },
+    {
+      "name": "Lactic acidosis",
+      "rate": 0.001,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 2400,
+  "year": 2023
+}

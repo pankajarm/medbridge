@@ -1,0 +1,38 @@
+[
+  {
+    "drug1": "Metformin",
+    "drug2": "Empagliflozin",
+    "type": "synergistic",
+    "severity": "low"
+  },
+  {
+    "drug1": "Metformin",
+    "drug2": "Sitagliptin",
+    "type": "synergistic",
+    "severity": "low"
+  },
+  {
+    "drug1": "Atorvastatin",
+    "drug2": "Amlodipine",
+    "type": "pharmacokinetic",
+    "severity": "moderate"
+  },
+  {
+    "drug1": "Rosuvastatin",
+    "drug2": "Aspirin",
+    "type": "additive",
+    "severity": "low"
+  },
+  {
+    "drug1": "Sertraline",
+    "drug2": "Aspirin",
+    "type": "bleeding_risk",
+    "severity": "moderate"
+  },
+  {
+    "drug1": "Losartan",
+    "drug2": "Aspirin",
+    "type": "reduced_efficacy",
+    "severity": "moderate"
+  }
+]

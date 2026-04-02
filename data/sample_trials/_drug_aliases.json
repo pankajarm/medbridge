@@ -1,0 +1,46 @@
+{
+  "Metformin": [
+    "二甲双胍",
+    "メトホルミン"
+  ],
+  "Empagliflozin": [
+    "エンパグリフロジン"
+  ],
+  "Sitagliptin": [
+    "シタグリプチン",
+    "西格列汀"
+  ],
+  "Atorvastatin": [
+    "阿托伐他汀",
+    "アトルバスタチン"
+  ],
+  "Rosuvastatin": [
+    "瑞舒伐他汀",
+    "ロスバスタチン"
+  ],
+  "Aspirin": [
+    "Aspirina",
+    "アスピリン"
+  ],
+  "Amlodipine": [
+    "Amlodipin",
+    "アムロジピン",
+    "Amlodipine"
+  ],
+  "Losartan": [
+    "ロサルタン",
+    "Losartan"
+  ],
+  "Pembrolizumab": [
+    "帕博利珠单抗",
+    "펨브롤리주맙",
+    "ペムブロリズマブ"
+  ],
+  "Sertraline": [
+    "Sertralin",
+    "セルトラリン"
+  ],
+  "Escitalopram": [
+    "エスシタロプラム"
+  ]
+}

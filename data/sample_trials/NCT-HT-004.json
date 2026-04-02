@@ -1,0 +1,29 @@
+{
+  "id": "NCT-HT-004",
+  "title": "Amlodipine versus Losartan dans l'hypertension artérielle essentielle",
+  "abstract": "Essai randomisé comparant l'amlodipine 5-10mg au losartan 50-100mg chez 1,400 patients atteints d'hypertension artérielle essentielle. Après 24 semaines, les deux médicaments ont atteint une réduction tensionnelle comparable. Les œdèmes périphériques étaient plus fréquents sous amlodipine (11.5% vs 2.0%). La toux était plus fréquente sous losartan (4.8% vs 0.9%). Les céphalées ont été rapportées chez 5.9% des patients sous amlodipine.",
+  "language": "fr",
+  "phase": "III",
+  "country": "FR",
+  "drugs": [
+    "Amlodipine",
+    "Losartan"
+  ],
+  "diseases": [
+    "Hypertension artérielle essentielle"
+  ],
+  "adverse_events": [
+    {
+      "name": "Œdèmes périphériques",
+      "rate": 0.115,
+      "population": "Western"
+    },
+    {
+      "name": "Toux",
+      "rate": 0.009,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 1400,
+  "year": 2022
+}

@@ -1,0 +1,34 @@
+{
+  "id": "NCT-DM-005",
+  "title": "Sitagliptin Added to Metformin in Type 2 Diabetes",
+  "abstract": "A multicenter trial evaluating sitagliptin 100mg added to metformin in 890 patients with inadequately controlled type 2 diabetes. After 24 weeks, sitagliptin plus metformin reduced HbA1c by an additional 0.7% compared to metformin alone (p<0.001). Weight remained neutral. Adverse events included nasopharyngitis (8%), headache (5%), and upper respiratory tract infection (4%). No cases of pancreatitis were reported. Hypoglycemia was rare (2%).",
+  "language": "en",
+  "phase": "III",
+  "country": "US",
+  "drugs": [
+    "Sitagliptin",
+    "Metformin"
+  ],
+  "diseases": [
+    "Type 2 Diabetes"
+  ],
+  "adverse_events": [
+    {
+      "name": "Nasopharyngitis",
+      "rate": 0.08,
+      "population": "Western"
+    },
+    {
+      "name": "Headache",
+      "rate": 0.05,
+      "population": "Western"
+    },
+    {
+      "name": "Hypoglycemia",
+      "rate": 0.02,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 890,
+  "year": 2022
+}

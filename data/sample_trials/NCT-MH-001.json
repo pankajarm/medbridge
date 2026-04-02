@@ -1,0 +1,34 @@
+{
+  "id": "NCT-MH-001",
+  "title": "Sertraline versus Escitalopram in Major Depressive Disorder",
+  "abstract": "A double-blind trial comparing sertraline 50-200mg to escitalopram 10-20mg in 1,100 patients with major depressive disorder. After 8 weeks, both showed similar efficacy on HAM-D scores (sertraline -12.3 vs escitalopram -12.8, p=0.42). Adverse events: nausea (sertraline 22% vs escitalopram 15%), sexual dysfunction (sertraline 18% vs escitalopram 12%), insomnia (sertraline 14% vs escitalopram 11%), weight gain (sertraline 4% vs escitalopram 6%).",
+  "language": "en",
+  "phase": "III",
+  "country": "US",
+  "drugs": [
+    "Sertraline",
+    "Escitalopram"
+  ],
+  "diseases": [
+    "Major Depressive Disorder"
+  ],
+  "adverse_events": [
+    {
+      "name": "Nausea",
+      "rate": 0.22,
+      "population": "Western"
+    },
+    {
+      "name": "Sexual dysfunction",
+      "rate": 0.18,
+      "population": "Western"
+    },
+    {
+      "name": "Insomnia",
+      "rate": 0.14,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 1100,
+  "year": 2022
+}

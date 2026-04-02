@@ -1,0 +1,35 @@
+{
+  "id": "NCT-CV-001",
+  "title": "Atorvastatin versus Rosuvastatin in Hypercholesterolemia",
+  "abstract": "A head-to-head comparison of atorvastatin 40mg versus rosuvastatin 20mg in 1,650 patients with primary hypercholesterolemia. After 12 weeks, rosuvastatin achieved greater LDL-C reduction (-52.4% vs -46.7%, p<0.001). Both statins similarly reduced cardiovascular events over 3 years. Adverse events: myalgia (atorvastatin 7.2%, rosuvastatin 6.8%), elevated liver enzymes (2.1% vs 1.8%), new-onset diabetes (1.2% vs 1.5%).",
+  "language": "en",
+  "phase": "IV",
+  "country": "US",
+  "drugs": [
+    "Atorvastatin",
+    "Rosuvastatin"
+  ],
+  "diseases": [
+    "Hypercholesterolemia",
+    "Cardiovascular Disease"
+  ],
+  "adverse_events": [
+    {
+      "name": "Myalgia",
+      "rate": 0.072,
+      "population": "Western"
+    },
+    {
+      "name": "Elevated liver enzymes",
+      "rate": 0.021,
+      "population": "Western"
+    },
+    {
+      "name": "New-onset diabetes",
+      "rate": 0.012,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 1650,
+  "year": 2022
+}

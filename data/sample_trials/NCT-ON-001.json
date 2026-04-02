@@ -1,0 +1,33 @@
+{
+  "id": "NCT-ON-001",
+  "title": "Pembrolizumab in Advanced Non-Small Cell Lung Cancer",
+  "abstract": "A phase III trial of pembrolizumab 200mg every 3 weeks versus docetaxel in 1,034 patients with previously treated advanced NSCLC expressing PD-L1. Pembrolizumab improved overall survival (median 10.4 vs 8.5 months, HR 0.71, p<0.001). Immune-related adverse events included hypothyroidism (9.1%), pneumonitis (5.8%), and colitis (1.6%). Grade 3-4 treatment-related events were less frequent with pembrolizumab (13.3% vs 35.3%).",
+  "language": "en",
+  "phase": "III",
+  "country": "US",
+  "drugs": [
+    "Pembrolizumab"
+  ],
+  "diseases": [
+    "Non-Small Cell Lung Cancer"
+  ],
+  "adverse_events": [
+    {
+      "name": "Hypothyroidism",
+      "rate": 0.091,
+      "population": "Western"
+    },
+    {
+      "name": "Pneumonitis",
+      "rate": 0.058,
+      "population": "Western"
+    },
+    {
+      "name": "Colitis",
+      "rate": 0.016,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 1034,
+  "year": 2023
+}

@@ -1,0 +1,35 @@
+{
+  "id": "NCT-DM-006",
+  "title": "Empagliflozin Cardiovascular Outcome Trial in Type 2 Diabetes",
+  "abstract": "This landmark trial enrolled 7,020 patients with type 2 diabetes and established cardiovascular disease. Empagliflozin 10mg/25mg reduced cardiovascular death by 38% (HR 0.62, p<0.001) and heart failure hospitalization by 35%. Overall MACE was reduced by 14%. Notable adverse events included genital mycotic infections (6.4% vs 1.8% placebo) and urinary tract infections (18.0% vs 17.0%). Diabetic ketoacidosis occurred in 0.1% of patients.",
+  "language": "en",
+  "phase": "III",
+  "country": "US",
+  "drugs": [
+    "Empagliflozin"
+  ],
+  "diseases": [
+    "Type 2 Diabetes",
+    "Cardiovascular Disease",
+    "Heart Failure"
+  ],
+  "adverse_events": [
+    {
+      "name": "Genital mycotic infections",
+      "rate": 0.064,
+      "population": "Western"
+    },
+    {
+      "name": "Urinary tract infections",
+      "rate": 0.18,
+      "population": "Western"
+    },
+    {
+      "name": "Diabetic ketoacidosis",
+      "rate": 0.001,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 7020,
+  "year": 2023
+}

@@ -1,0 +1,34 @@
+{
+  "id": "NCT-MH-002",
+  "title": "Sertralin versus Escitalopram bei Major Depression",
+  "abstract": "Eine doppelblinde Studie zum Vergleich von Sertralin 50-200mg mit Escitalopram 10-20mg bei 850 Patienten mit Major Depression. Nach 8 Wochen zeigten beide eine vergleichbare Wirksamkeit auf der HAM-D-Skala. Unerwünschte Ereignisse: Übelkeit (Sertralin 20% vs Escitalopram 14%), sexuelle Dysfunktion (Sertralin 16% vs Escitalopram 10%), Schlaflosigkeit (Sertralin 12% vs Escitalopram 9%). Die Gewichtszunahme war unter Escitalopram etwas häufiger (7% vs 5%).",
+  "language": "de",
+  "phase": "III",
+  "country": "DE",
+  "drugs": [
+    "Sertralin",
+    "Escitalopram"
+  ],
+  "diseases": [
+    "Major Depression"
+  ],
+  "adverse_events": [
+    {
+      "name": "Übelkeit",
+      "rate": 0.2,
+      "population": "Western"
+    },
+    {
+      "name": "Sexuelle Dysfunktion",
+      "rate": 0.16,
+      "population": "Western"
+    },
+    {
+      "name": "Schlaflosigkeit",
+      "rate": 0.12,
+      "population": "Western"
+    }
+  ],
+  "enrollment": 850,
+  "year": 2022
+}

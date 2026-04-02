@@ -1,28 +1,33 @@
 # MedBridge: Multilingual Clinical Trial Intelligence
 
-A fully local, multi-agentic system for cross-lingual clinical trial discovery and analysis, powered by [Microsoft Harrier-OSS-v1](https://huggingface.co/microsoft/harrier-oss-v1-0.6b) multilingual embeddings.
+**Everything runs locally. No cloud. No API keys. No data leaves your machine.**
+
+A fully local, multi-agentic system for cross-lingual clinical trial discovery and analysis -- powered by [Microsoft Harrier](https://huggingface.co/microsoft/harrier-oss-v1-0.6b) multilingual embeddings, [Google Gemma 3](https://huggingface.co/bartowski/google_gemma-3-4b-it-GGUF) LLM, [Qdrant](https://qdrant.tech/) vector search, [FalkorDB](https://www.falkordb.com/) knowledge graph, and [LangGraph](https://github.com/langchain-ai/langgraph) multi-agent orchestration.
 
 **Search "metformin cardiovascular outcomes" in English, get results from Chinese, Japanese, and German studies -- with zero translation.**
 
+## Why Local Matters
+
+Clinical trial data is sensitive. MedBridge proves you can build a production-grade multilingual research intelligence system that runs entirely on a laptop -- no cloud dependencies, no data exfiltration risk, no API costs. Every component is open-source and runs on consumer hardware.
+
 ## What It Does
 
-MedBridge demonstrates how multilingual embedding models enable cross-lingual medical research intelligence:
-
-- **Cross-lingual semantic search** -- Query in any language, find trials in all 94 supported languages
-- **Drug interaction knowledge graph** -- Visualize drug relationships extracted from global studies
-- **Cross-cultural adverse event analysis** -- Compare safety signals across populations (e.g., Asian vs Western)
-- **Multi-agent orchestration** -- 5 LangGraph agents collaborate with visible trace
+- **Cross-lingual semantic search** -- Query in any language, find trials in all 94 supported languages via Harrier embeddings
+- **Drug interaction knowledge graph** -- Visualize drug relationships in FalkorDBLite with Cypher queries
+- **Cross-cultural adverse event analysis** -- Compare safety signals across populations using Gemma 3 LLM analysis
+- **Multi-agent orchestration** -- 5 LangGraph agents (supervisor, search, graph, analysis, ingestion) collaborate with visible trace
+- **Vector + graph hybrid retrieval** -- Qdrant semantic search combined with FalkorDB graph traversal
 
 ## Tech Stack (100% Local, No Cloud Required)
 
-| Component | Technology |
-|-----------|-----------|
-| Embeddings | [Harrier-OSS-v1-0.6B](https://huggingface.co/microsoft/harrier-oss-v1-0.6b) via sentence-transformers (MPS GPU) |
-| LLM | [Gemma 3 4B-it](https://huggingface.co/bartowski/google_gemma-3-4b-it-GGUF) via llama-cpp-python (Metal GPU) |
-| Vector DB | Qdrant (embedded mode, no server) |
-| Graph DB | FalkorDBLite (embedded, Cypher queries) |
-| Agents | LangGraph (StateGraph with conditional routing) |
-| UI | Streamlit |
+| Component | Technology | Role |
+|-----------|-----------|------|
+| Embeddings | [Harrier-OSS-v1-0.6B](https://huggingface.co/microsoft/harrier-oss-v1-0.6b) (MPS GPU) | 94-language multilingual embeddings, 1024-dim, 32K context |
+| LLM | [Gemma 3 4B-it](https://huggingface.co/bartowski/google_gemma-3-4b-it-GGUF) Q4_K_M (Metal GPU) | Intent classification, Cypher generation, analysis synthesis |
+| Vector DB | [Qdrant](https://qdrant.tech/) (embedded, no server) | Semantic similarity search over trial embeddings |
+| Graph DB | [FalkorDBLite](https://github.com/FalkorDB/FalkorDB) (embedded) | Drug interactions, trial relationships via Cypher |
+| Agents | [LangGraph](https://github.com/langchain-ai/langgraph) (StateGraph) | Multi-agent orchestration with conditional routing |
+| UI | [Streamlit](https://streamlit.io/) | Interactive web dashboard with search, graph viz, analytics |
 
 **Runs entirely on a MacBook with Apple Silicon (M1/M2/M3/M4) and 8GB RAM.**
 

@@ -6,6 +6,23 @@ A fully local, multi-agentic system for cross-lingual clinical trial discovery a
 
 **Search "metformin cardiovascular outcomes" in English, get results from Chinese, Japanese, and German studies -- with zero translation.**
 
+## Screenshots
+
+### LLM-Powered Cross-Lingual Analysis
+Gemma 3 4B analyzes retrieved trials across languages and synthesizes findings with cross-lingual insights -- all running locally on Metal GPU.
+
+![LLM Analysis](docs/images/llm_analysis.png)
+
+### Multilingual Trial Retrieval
+Harrier embeddings retrieve relevant trials across languages (English, German, Japanese, etc.) ranked by semantic similarity -- no translation needed.
+
+![Search Results](docs/images/search_results.png)
+
+### Hardware Footprint
+Everything runs on an Apple M3 with 8GB RAM. `asitop` shows real-time CPU, GPU, and memory utilization during inference.
+
+![Hardware Monitor](docs/images/asitop_hardware.png)
+
 ## Why Local Matters
 
 Clinical trial data is sensitive. MedBridge proves you can build a production-grade multilingual research intelligence system that runs entirely on a laptop -- no cloud dependencies, no data exfiltration risk, no API costs. Every component is open-source and runs on consumer hardware.

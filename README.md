@@ -53,39 +53,42 @@ Clinical trial data is sensitive. MedBridge proves you can build a production-gr
 ### Requirements
 
 - macOS with Apple Silicon (M1/M2/M3/M4)
-- Python 3.12 (arm64 -- see note below)
+- Python 3.12 (must be arm64 -- see Troubleshooting if unsure)
 - Xcode Command Line Tools: `xcode-select --install`
+- ~6GB free disk space (models + dependencies)
 
-### Setup
+### Setup (~10 minutes)
 
 ```bash
-# 1. Clone
+# 1. Clone (~1s)
 git clone https://github.com/pankajarm/medbridge.git
 cd medbridge
 
-# 2. Create a native arm64 virtual environment
+# 2. Create a native arm64 virtual environment (~2s)
 #    IMPORTANT: The venv MUST use arm64 Python, not x86_64/Rosetta.
 #    PyTorch >= 2.4 only ships macOS arm64 wheels.
 python3.12 -m venv .venv
 source .venv/bin/activate
 
-# Verify architecture (must say arm64, NOT x86_64):
+# Verify architecture (must print arm64, NOT x86_64):
 python -c "import platform; print(platform.machine())"
 
-# 3. Install dependencies
+# 3. Install core dependencies (~2 min)
 pip install -e .
 
-# 4. Install llama-cpp-python with Metal GPU acceleration
-#    If this fails with header errors, see Troubleshooting below.
+# 4. Install llama-cpp-python with Metal GPU acceleration (~2 min compile)
+#    This compiles llama.cpp from source with Metal support.
+#    If it fails, see Troubleshooting below -- the app still works
+#    for search/retrieval without it (LLM analysis will use a mock).
 CMAKE_ARGS="-DGGML_METAL=on" pip install llama-cpp-python
 
 # 5. Copy environment config
 cp .env.example .env
 
-# 6. Download models (~4GB total: Harrier 1.5GB + Gemma 2.5GB)
+# 6. Download models (~4 min, ~4GB: Harrier 1.5GB + Gemma 2.5GB)
 python scripts/download_models.py
 
-# 7. Generate sample data + build databases
+# 7. Generate sample data + build databases (~1 min)
 python scripts/setup_databases.py
 
 # 8. Launch web UI
@@ -171,18 +174,26 @@ With deliberate cross-population differences in adverse event rates for demo pur
 
 ### `llama-cpp-python` fails to compile
 
-If you see errors about `stdint.h`, `stdbool.h`, or `unknown type name 'uint16_t'` during `pip install llama-cpp-python`, you likely have stale C headers in `/usr/local/include/` from old Homebrew or MySQL installs:
+**The app works without it** -- Harrier embeddings, vector search, graph queries, and the Streamlit UI all run fine. Only the LLM analysis will use a keyword-based mock instead of Gemma 3. You can always install it later.
+
+If you see errors about `stdint.h`, `stdbool.h`, or `'cstddef' file not found`, you likely have stale C headers in `/usr/local/include/` from old Homebrew, MySQL, or Node.js installs:
 
 ```bash
 # Check for conflicting headers
 ls /usr/local/include/stdint.h /usr/local/include/stdbool.h 2>/dev/null
 
-# Move them out of the way
+# Move them out of the way (only if they exist)
 sudo mv /usr/local/include/stdint.h /usr/local/include/stdint.h.bak
 sudo mv /usr/local/include/stdbool.h /usr/local/include/stdbool.h.bak
 
 # Retry
 CMAKE_ARGS="-DGGML_METAL=on" pip install llama-cpp-python
+```
+
+If it still fails due to other headers in `/usr/local/include/`, try:
+```bash
+SDK=$(xcrun --show-sdk-path)
+CMAKE_ARGS="-DGGML_METAL=on -DCMAKE_FIND_ROOT_PATH=$SDK -DCMAKE_IGNORE_PATH=/usr/local/include" pip install llama-cpp-python
 ```
 
 ### Python reports `x86_64` instead of `arm64`
@@ -199,17 +210,6 @@ source .venv/bin/activate
 ### `unknown model architecture: 'gemma4'`
 
 This means you have the Gemma 4 GGUF which `llama-cpp-python` doesn't support yet. MedBridge uses Gemma 3 4B instead. Re-run `python scripts/download_models.py`.
-
-## Hardware Monitoring
-
-To watch GPU/CPU/memory usage in real-time while running MedBridge:
-
-```bash
-pip install asitop
-sudo asitop
-```
-
-This shows Apple Silicon CPU, GPU, ANE utilization and power draw -- similar to `nvitop` on Linux.
 
 ## License
 

@@ -67,13 +67,14 @@ def render_sidebar(system):
     for s in suggestions:
         if st.sidebar.button(s, key=f"sug_{hash(s)}", use_container_width=True):
             st.session_state["query_input"] = s
+            st.session_state["auto_run"] = True
             st.rerun()
 
     st.sidebar.divider()
     st.sidebar.subheader("Tech Stack")
     st.sidebar.markdown("""
     - **Embeddings**: Harrier-OSS-v1-0.6B (MPS)
-    - **LLM**: Gemma 4 E2B (Metal)
+    - **LLM**: Gemma 3 4B (Metal)
     - **Vector DB**: Qdrant (embedded)
     - **Graph DB**: FalkorDBLite (embedded)
     - **Agents**: LangGraph
@@ -266,7 +267,8 @@ def main():
             placeholder="e.g., Find studies on metformin cardiovascular outcomes",
         )
 
-        if st.button("Search", type="primary", use_container_width=True) and query:
+        auto_run = st.session_state.pop("auto_run", False)
+        if (st.button("Search", type="primary", use_container_width=True) or auto_run) and query:
             st.session_state["query_input"] = ""
 
             with st.status("Running multi-agent pipeline...", expanded=True) as status:

@@ -2,6 +2,7 @@
 
 import json
 import time
+from urllib.parse import quote_plus
 
 import plotly.graph_objects as go
 import streamlit as st
@@ -96,8 +97,12 @@ def render_results(results):
 
         with st.container(border=True):
             col1, col2, col3 = st.columns([0.6, 0.2, 0.2])
+            title = r.get("title", "Untitled")
+            drugs = r.get("drugs", [])
+            pubmed_query = quote_plus(f"{title} {' '.join(drugs)}".strip())
+            pubmed_url = f"https://pubmed.ncbi.nlm.nih.gov/?term={pubmed_query}"
             with col1:
-                st.markdown(f"**{flag} {r.get('title', 'Untitled')}**")
+                st.markdown(f"**{flag} [{title}]({pubmed_url})**")
             with col2:
                 st.metric("Similarity", f"{score:.3f}")
             with col3:
@@ -247,7 +252,7 @@ def main():
 
     # Main content
     st.title("MedBridge")
-    st.caption("Multilingual Clinical Trial Intelligence powered by Microsoft Harrier Embeddings")
+    st.caption("Multilingual Clinical Trial Intelligence powered by Microsoft Harrier Embeddings, Google Gemma 3 4B, Qdrant Vector DB, FalkorDBLite Graph DB, and LangGraph Agents")
 
     # Tabs
     tab_search, tab_graph, tab_dashboard = st.tabs(["Search & Analysis", "Drug Interaction Graph", "Dashboard"])

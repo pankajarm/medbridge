@@ -18,8 +18,8 @@ Harrier embeddings retrieve relevant trials across languages (English, German, J
 
 ![Search Results](docs/images/search_results.png)
 
-### Hardware Footprint
-Everything runs on an Apple M3 with 8GB RAM. `asitop` shows real-time CPU, GPU, and memory utilization during inference.
+### Hardware Footprint (Apple M3, 8GB RAM)
+Both models (Harrier + Gemma 3) run comfortably on an 8GB Apple Silicon Mac -- 5.6GB RAM, 14% GPU, under 1W average power draw at idle after inference.
 
 ![Hardware Monitor](docs/images/asitop_hardware.png)
 

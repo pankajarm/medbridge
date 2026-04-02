@@ -7,10 +7,10 @@ license = "MIT"
 readme = "README.md"
 dependencies = [
     "numpy<2",
-    "torch==2.2.2",
-    "transformers==4.44.2",
-    "sentence-transformers==3.1.1",
-    "tokenizers>=0.19,<0.20",
+    "torch>=2.2",
+    "transformers>=4.51",
+    "sentence-transformers>=3.4",
+    "tokenizers>=0.21",
     "qdrant-client>=1.12",
     "falkordblite>=0.9",
     "langgraph>=0.3",
